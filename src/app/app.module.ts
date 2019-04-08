@@ -9,10 +9,7 @@ import { MatToolbarModule, MatButtonModule, MatIconModule, MatCardModule } from 
 import { StorageComponent } from './storage/storage.component';
 import { InteractionsComponent } from './interactions/interactions.component';
 import { HomeComponent } from './home/home.component';
-import { AmplifyAngularModule, AmplifyService, AmplifyModules } from 'aws-amplify-angular';
-import Auth from '@aws-amplify/auth';
-import Interactions from '@aws-amplify/interactions';
-import Storage from '@aws-amplify/Storage';
+import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
 
 
 @NgModule({
@@ -34,18 +31,7 @@ import Storage from '@aws-amplify/Storage';
     MatCardModule
 
   ],
-  providers: [
-    {
-      provide: AmplifyService,
-      useFactory:  () => {
-        return AmplifyModules({
-          Auth,
-          Storage,
-          Interactions
-        });
-      }
-    }
-  ],
+  providers: [AmplifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
